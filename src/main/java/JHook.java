@@ -9,8 +9,13 @@ import java.util.logging.LogManager;
 
 public class JHook implements NativeKeyListener {
 
+    WordHandler wh;
+    StringBuilder word;
 
     public JHook(){
+        wh = new WordHandler();
+        word = new StringBuilder();
+
         LogManager.getLogManager().reset();
         try {
             GlobalScreen.registerNativeHook();
@@ -24,25 +29,44 @@ public class JHook implements NativeKeyListener {
         //Not yet implemented.
     }
 
-
     public void nativeKeyPressed(NativeKeyEvent nke) {
 
     }
 
-
     public void nativeKeyReleased(NativeKeyEvent nke) {
-        if(nke.getKeyCode() == NativeKeyEvent.VC_ENTER){
-            System.out.println("");
-        } else if(nke.getKeyCode() == NativeKeyEvent.VC_BACK_SLASH){
+        if (nke.getKeyCode() == NativeKeyEvent.VC_BACKSPACE && word.length() > 0 && word != null) {
+            word.deleteCharAt(word.length() - 1);
+        }
 
-        } else {
-            if (!Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK)) {
+        if (!Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK)) { //If capslock is not active
+            if (nke.getKeyCode() == NativeKeyEvent.VC_BACKSPACE) {
+
+            } else if(nke.getKeyCode() == NativeKeyEvent.VC_SPACE){
+
+            } else if(nke.getKeyCode() == NativeKeyEvent.VC_CAPS_LOCK){
+
+            }else {
                 String capsLock = NativeKeyEvent.getKeyText(nke.getKeyCode());
                 capsLock = capsLock.toLowerCase();
-                System.out.print(capsLock);
-            } else {
-                System.out.print(NativeKeyEvent.getKeyText(nke.getKeyCode()));
+                word.append(capsLock);
             }
+        } else {
+            if (nke.getKeyCode() == NativeKeyEvent.VC_BACKSPACE) {
+
+            } else if(nke.getKeyCode() == NativeKeyEvent.VC_SPACE){
+
+            } else if(nke.getKeyCode() == NativeKeyEvent.VC_CAPS_LOCK) {
+
+            } else {
+                word.append(NativeKeyEvent.getKeyText(nke.getKeyCode()));
+            }
+        }
+
+        if (nke.getKeyCode() == NativeKeyEvent.VC_SPACE || nke.getKeyCode() == NativeKeyEvent.VC_TAB) {
+            wh.addWord(word.toString());
+            word.setLength(0); //Clears the buffer
+            System.out.println();
+            wh.getWords();
         }
     }
 }
