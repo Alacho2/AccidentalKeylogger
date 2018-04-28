@@ -22,7 +22,16 @@ public class FileHandler {
         System.out.println(file);
     }
 
-    public String givePath(){
+    public String getPathname(){
         return pathname;
+    }
+
+    public void writeToFile(String word){
+        try {
+            bf.append(word);
+            bf.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

