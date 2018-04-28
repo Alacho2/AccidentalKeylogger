@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="accidentalkeylogger:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/accidentalkeylogger_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="accidentalkeylogger/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>

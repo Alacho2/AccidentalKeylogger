@@ -3,7 +3,7 @@ import java.util.List;
 
 public class WordHandler {
 
-    List<String> words;
+    static List<String> words;
 
     public WordHandler(){
         words = new ArrayList<String>();

@@ -30,34 +30,28 @@ public class JHook implements NativeKeyListener {
     }
 
     public void nativeKeyPressed(NativeKeyEvent nke) {
-
+        //Not yet implemented
     }
 
     public void nativeKeyReleased(NativeKeyEvent nke) {
-        if (nke.getKeyCode() == NativeKeyEvent.VC_BACKSPACE && word.length() > 0 && word != null) {
+        if (word.length() > 0 && nke.getKeyCode() == NativeKeyEvent.VC_BACKSPACE) {
             word.deleteCharAt(word.length() - 1);
         }
 
         if (!Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK)) { //If capslock is not active
-            if (nke.getKeyCode() == NativeKeyEvent.VC_BACKSPACE) {
-
-            } else if(nke.getKeyCode() == NativeKeyEvent.VC_SPACE){
-
-            } else if(nke.getKeyCode() == NativeKeyEvent.VC_CAPS_LOCK){
-
-            }else {
+            if (nke.getKeyCode() == NativeKeyEvent.VC_BACKSPACE){ }
+            else if(nke.getKeyCode() == NativeKeyEvent.VC_SPACE){ }
+            else if(nke.getKeyCode() == NativeKeyEvent.VC_CAPS_LOCK){ }
+            else {
                 String capsLock = NativeKeyEvent.getKeyText(nke.getKeyCode());
                 capsLock = capsLock.toLowerCase();
                 word.append(capsLock);
             }
         } else {
-            if (nke.getKeyCode() == NativeKeyEvent.VC_BACKSPACE) {
-
-            } else if(nke.getKeyCode() == NativeKeyEvent.VC_SPACE){
-
-            } else if(nke.getKeyCode() == NativeKeyEvent.VC_CAPS_LOCK) {
-
-            } else {
+            if (nke.getKeyCode() == NativeKeyEvent.VC_BACKSPACE) { }
+            else if(nke.getKeyCode() == NativeKeyEvent.VC_SPACE){ }
+            else if(nke.getKeyCode() == NativeKeyEvent.VC_CAPS_LOCK) { }
+            else {
                 word.append(NativeKeyEvent.getKeyText(nke.getKeyCode()));
             }
         }
