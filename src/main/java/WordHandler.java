@@ -19,4 +19,10 @@ public class WordHandler {
             fh.writeToFile(s);
         }
     }
+
+    public void getWords(){
+        for(String s : words){
+            System.out.println(s);
+        }
+    }
 }
