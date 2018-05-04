@@ -20,9 +20,10 @@ public class Scheduler {
         ses.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
+                System.out.println("Hallo dsds");
                 wh.sendWordsToFile();
                 mp.sendEmail();
             }
-        },0, 30, TimeUnit.SECONDS);
+        },0, 15, TimeUnit.SECONDS);
     }
 }

